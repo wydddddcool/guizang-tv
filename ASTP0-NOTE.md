@@ -5,3 +5,5 @@
 
 改动：`XiaomiControls.enabled()` 增加 `MiTV-ASTP0` 白名单。
 真机验证：`input 23` = HDMI 1，`input 24` = HDMI 2。
+
+触发记录：2026-11-17 第二次推送。
