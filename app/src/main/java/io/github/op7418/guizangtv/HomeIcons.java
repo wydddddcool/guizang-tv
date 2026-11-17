@@ -10,7 +10,7 @@ final class HomeIcons {
         int resource;
         switch(id){
             case "hdmi:1":resource=R.drawable.mark_playstation;break;
-            case "hdmi:2":resource=R.drawable.mark_monitor_play;break;
+            case "hdmi:2":resource=R.drawable.mark_switch;break;
             case "com.xiaodianshi.tv.yst":resource=R.drawable.mark_bilibili;break;
             case "com.xiaomi.mitv.smartshare":resource=R.drawable.mark_broadcast;break;
             case "com.mitv.gallery":resource=R.drawable.mark_image;break;
