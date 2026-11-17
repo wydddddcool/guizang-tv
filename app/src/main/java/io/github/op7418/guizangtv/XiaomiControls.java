@@ -12,8 +12,14 @@ import android.provider.Settings;
 final class XiaomiControls {
     private XiaomiControls() { }
 
+    /** Verified on MiTV-ASTP0, OS3.0.101.0.PSTAATV: input 23 = HDMI 1, input 24 = HDMI 2. */
+    private static final String[] SUPPORTED_MODELS = { "MiTV-MTSU0", "MiTV-ASTP0" };
+
     static boolean enabled() {
-        return "MiTV-MTSU0".equals(Build.MODEL);
+        for (String model : SUPPORTED_MODELS) {
+            if (model.equals(Build.MODEL)) return true;
+        }
+        return false;
     }
 
     /** Observed on this firmware: source 23 = HDMI 1, source 24 = HDMI 2. */
