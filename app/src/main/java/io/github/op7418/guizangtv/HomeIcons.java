@@ -24,21 +24,22 @@ final class HomeIcons {
             case "control:inputs":resource=R.drawable.mark_monitor_play;break;
             case "control:apps":resource=R.drawable.mark_squares_four;break;
             default:
-                Drawable app=appIcon(context,id);
-                if(app!=null)return app;
-                resource=id.startsWith("hdmi:")?R.drawable.mark_monitor_play:R.drawable.mark_app_window;
+                if(id.startsWith("hdmi:")){resource=R.drawable.mark_monitor_play;break;}
+                return letter(context,id,color);
         }
         Drawable mark=context.getDrawable(resource).mutate();mark.setTint(color);return mark;
     }
 
-    /** Installed apps use their own launcher icon instead of the generic window mark. */
-    private static Drawable appIcon(Context context,String id){
-        if(id.startsWith("hdmi:")||id.startsWith("control:")||!id.contains("."))return null;
+    /** Every unknown app keeps the monochrome set: a thin frame with its first character. */
+    private static Drawable letter(Context context,String id,int color){
+        String label=id;
         try{
-            Drawable icon=context.getPackageManager().getApplicationIcon(id);
-            return icon==null?null:icon.mutate();
+            PackageManager pm=context.getPackageManager();
+            label=pm.getApplicationLabel(pm.getApplicationInfo(id,0)).toString();
         }catch(PackageManager.NameNotFoundException|RuntimeException unavailable){
-            return null;
+            label=id;
         }
+        String first=label.isEmpty()?"?":label.substring(0,Math.min(2,label.length()));
+        return new LetterMark(first,color,context.getResources().getDisplayMetrics().density);
     }
 }
