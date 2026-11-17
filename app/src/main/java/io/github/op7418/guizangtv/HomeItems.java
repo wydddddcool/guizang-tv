@@ -8,14 +8,14 @@ import java.util.*;
 
 /** Stable app/source identities; removing an entry never uninstalls an app. */
 final class HomeItems {
-    static final String[] DEFAULTS = {"hdmi:2", "hdmi:1", "com.xiaodianshi.tv.yst",
+    static final String[] DEFAULTS = {"hdmi:1", "hdmi:2", "com.xiaodianshi.tv.yst",
             "com.xiaomi.mitv.smartshare", "com.mitv.gallery", "com.mitv.tvhome"};
     final Context context;
     final LinkedHashMap<String,String> names = new LinkedHashMap<>();
     final List<String> order = new ArrayList<>();
     HomeItems(Context c) {
         context = c;
-        String[] labels = {"PlayStation 5", "Apple TV", "哔哩哔哩", "小米投屏", "相册", "小米原桌面"};
+        String[] labels = {"PS5", "Switch", "哔哩哔哩", "小米投屏", "相册", "小米原桌面"};
         for (int i=0;i<DEFAULTS.length;i++) names.put(DEFAULTS[i], labels[i]);
         discover();
         try {
